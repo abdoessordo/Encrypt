@@ -68,12 +68,10 @@ function uncode(code){
 
 function runcode(){
     code(input_encrypt.value)
-    input_encrypt.value=""
 }
 
 function rununcode(){
     uncode(input_decrypt.value)
-    input_decrypt.value=""
 }
 
 button_encrypt.addEventListener("click",runcode)
