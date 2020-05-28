@@ -87,6 +87,10 @@ footer{
     margin: 0;
     padding: 0;
 }
+.wrapper{
+    outline: red;
+    padding: 0 20px;
+}
 
 @media (min-width:700px){
     .textarea{
@@ -98,12 +102,6 @@ footer{
     }
     h4{
         text-align: center  ;
-    }
-    .wrapper{
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 }
 
