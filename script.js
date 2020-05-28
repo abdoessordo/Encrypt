@@ -2,17 +2,25 @@ const input_encrypt = document.getElementById('input_encrypt')
 const button_encrypt = document.getElementById('button_encrypt')
 const textarea_encrypt = document.getElementById('textarea_encrypt')
 const error_encrypt = document.getElementById('error_encrypt')
-
+const clear_encrypt = document.getElementById('clear_encrypt')
+const copy_encrypt = document.getElementById('copy_encrypt')
 
 const input_decrypt = document.getElementById('input_decrypt')
 const button_decrypt = document.getElementById('button_decrypt')
 const textarea_decrypt = document.getElementById('textarea_decrypt')
 const error_decrypt = document.getElementById('error_decrypt')
+const clear_decrypt = document.getElementById('clear_decrypt')
+const copy_decrypt = document.getElementById('copy_decrypt')
+
+
+////////////////////////////////////
+////////////////////////////////////
+
 
 function code(mdp) {
-    if(isNaN(mdp)){
-        document.getElementById("error_encrypt").innerHTML = "Please enter a correct number !";
-        document.getElementById("textarea_encrypt").innerHTML = "";
+    if(isNaN(mdp) || mdp.length === 0){
+        error_encrypt.innerHTML = "Please enter a correct number !";
+        textarea_encrypt.innerHTML = "";
     }else{
         const mdparr = mdp.toString().split('')
         let mdp1 = []
@@ -40,15 +48,15 @@ function code(mdp) {
             result.push(mdp1[i])
             result.push(mdp2[j])
         }
-        document.getElementById("textarea_encrypt").innerHTML = result.join('');
-        document.getElementById("error_encrypt").innerHTML ="";
+        textarea_encrypt.innerHTML = result.join('');
+        error_encrypt.innerHTML ="";
     }   
 }
 
 function uncode(code){
-    if(isNaN(code)){
-        document.getElementById("error_decrypt").innerHTML = "Please enter a correct number !";
-        document.getElementById("textarea_decrypt").innerHTML = "";
+    if(isNaN(code) || code.length === 0){
+        error_decrypt.innerHTML = "Please enter a correct number !";
+        textarea_decrypt.innerHTML = "";
     }else{
         const codearr = code.toString().split('')
         let code1 = []
@@ -75,8 +83,8 @@ function uncode(code){
             result.push(code1[i])
             result.push(code2[j])
         }
-        document.getElementById("textarea_decrypt").innerHTML = result.join('');
-        document.getElementById("error_decrypt").innerHTML ="";
+        textarea_decrypt.innerHTML = result.join('');
+        error_decrypt.innerHTML ="";
     }
 }
 
@@ -87,6 +95,17 @@ function runcode(){
 function rununcode(){
     uncode(input_decrypt.value)
 }
+
+function copytext(str){
+    str.select()
+    str.setSelectionRange(0, 99999)
+    document.execCommand("copy")
+}
+
+
+////////////////////////////////////
+////////////////////////////////////
+
 
 button_encrypt.addEventListener("click",runcode)
 
@@ -100,4 +119,20 @@ input_decrypt.addEventListener('keypress',(e)=>{
     if (e.keyCode ===13){rununcode()}
 })
 
+clear_decrypt.addEventListener('click',()=>{
+    textarea_decrypt.innerHTML=""
+    input_decrypt.value=""
+    error_decrypt.innerHTML=""
+})
 
+clear_encrypt.addEventListener('click',()=>{
+    textarea_encrypt.innerHTML=""
+    input_encrypt.value=""
+    error_encrypt.innerHTML=""
+})
+
+copy_encrypt.addEventListener('click',()=>{
+    textarea_encrypt.select();
+    textarea_encrypt.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+})
