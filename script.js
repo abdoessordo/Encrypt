@@ -96,13 +96,6 @@ function rununcode(){
     uncode(input_decrypt.value)
 }
 
-function copytext(str){
-    str.select()
-    str.setSelectionRange(0, 99999)
-    document.execCommand("copy")
-}
-
-
 ////////////////////////////////////
 ////////////////////////////////////
 
@@ -129,10 +122,4 @@ clear_encrypt.addEventListener('click',()=>{
     textarea_encrypt.innerHTML=""
     input_encrypt.value=""
     error_encrypt.innerHTML=""
-})
-
-copy_encrypt.addEventListener('click',()=>{
-    textarea_encrypt.select();
-    textarea_encrypt.setSelectionRange(0, 99999);
-    document.execCommand("copy");
 })
